@@ -1,0 +1,34 @@
+'员工列表-查看组test
+Function GroupCheck()
+    Browser("京东商城后台").Page("京东商城后台").WebEdit("name").Set "admin"
+    Browser("京东商城后台").Page("京东商城后台").WebEdit("password").SetSecure "5845166fc363dfaf070c3841a5ee50b0e89b6193e054502aa110c9d6"
+    Browser("京东商城后台").Page("京东商城后台").WebButton("登陆").Click
+    Browser("京东商城后台").Page("商城后台管理系统").Link("商品管理").Click
+    Browser("京东商城后台").Page("商城后台管理系统").Link("商品管理_2").Click
+    Browser("京东商城后台").Page("商城后台管理系统_3").Link("查看").Click
+    Browser("京东商城后台").Page("京东").Image("s_55ba445b35b85").Check CheckPoint("s_55ba445b35b85")
+End Function
+
+'会员列表-修改test
+Function changeList()
+    Browser("京东商城后台").Page("京东商城后台").WebEdit("name").Set "admin"
+    Browser("京东商城后台").Page("京东商城后台").WebEdit("password").SetSecure "584519b19f4e3490fc8943ff192689434d1992b0e84ae0539076ec1a"
+    Browser("京东商城后台").Page("京东商城后台").WebButton("登陆").Click
+    Browser("京东商城后台").Page("商城后台管理系统").Link("用户管理").Click
+    Browser("京东商城后台").Page("商城后台管理系统").Link("会员列表").Click
+    Browser("京东商城后台").Page("商城后台管理系统_6").Link("修改").Click
+    Browser("京东商城后台").Page("商城后台管理系统_5").WebEdit("username").Set "zhangjiahao"
+    Browser("京东商城后台").Page("商城后台管理系统_5").WebButton("提交").Click
+End Function
+
+'商品管理-图库test
+Function picturesCheck()
+    Browser("京东商城后台").Page("京东商城后台").WebEdit("name").Set "admin"
+    Browser("京东商城后台").Page("京东商城后台").WebEdit("password").SetSecure "584517ee2f8d7a0b1e4b40b0a2944f580f72d63845530b57351c76ab"
+    Browser("京东商城后台").Page("京东商城后台").WebButton("登陆").Click
+    Browser("京东商城后台").Page("商城后台管理系统").Link("商品管理").Click
+    Browser("京东商城后台").Page("商城后台管理系统").Link("商品管理_2").Click
+    Browser("京东商城后台").Page("商城后台管理系统_3").Link("图库").Click
+    Browser("京东商城后台").Page("商城后台管理系统_4").Image("150x150").Check CheckPoint("150x150")
+End Function
+

@@ -1,0 +1,96 @@
+'登录
+	'智联商城Browser
+	Set Browser=description.Create()
+	Browser("opentitle").value="智联商城"
+	'登录页
+	Set loginPage=description.Create()
+	loginPage("title").value="登录"
+	'智联商城主页
+	Set mainPage=description.Create()
+	mainPage("title").value="智联商城"
+	'登录链接
+	Set loginLink=description.Create()
+	loginLink("text").value="登录"
+	'用户名
+	Set userName=description.Create()
+	userName("name").value="username"
+	'密码
+	Set password=description.Create()
+	password("name").value="password"
+	'登录按钮
+	Set loginButton=description.Create()
+	loginButton("name").value="登　 录"
+	
+'个人信息	
+	'智联商城_2页
+	Set zlPage=description.Create()
+	zlPage("name").value="智联商城_2"
+	'zhangjiahao
+	Set zjhLink=description.Create()
+	zjhLink("text").value="zhangjiahao"
+	'京东12页
+	Set jd12Page=description.Create()
+	jdPage("title").value="京东12"
+'修改个人信息
+	'nickname
+	Set nickname=description.Create()
+	nickname("name")="nickname"
+	'email
+	Set email=description.Create()
+	email("name")="email"
+	'username
+	Set username=description.Create()
+	username("name")="username"
+	'password
+	Set password=description.Create()
+	password("name")="password"
+	'repassword
+	Set repassword=description.Create()
+	repassword("name")="repassword"
+	'提交按钮
+	Set inputButton=description.Create()
+	inputButton("name")="提交"
+	
+'收货地址
+	'收货地址
+	Set addressLink=description.Create()
+	addressLink("text").value="收货地址"
+	'京东12_2页
+	Set jd12Page2=description.Create()
+	jd12Page2("name").value="京东12_2"
+	'添加收货地址
+	Set addAddressdescription.Create()
+	addAddress("text").value="添加收货地址"
+	'linkman
+	Set linkman=description.Create()
+	linkman("name").value="linkman"
+	'province
+	Set province=description.Create()
+	province("name").value="province"
+	'city
+	Set city=description.Create()
+	city("name").value="city"
+	'country
+	Set country=description.Create()
+	country("name").value="country"
+	'address2
+	Set address2=description.Create()
+	address2("name").value="address2"
+	'phone
+	Set phone=description.Create()
+	phone("name").value="phone"
+	'code
+	Set code=description.Create()
+	code("name").value="code"
+	'保存收货地址
+	Set addButton=description.Create()
+	addButton("innertext").value="保存收货地址"
+	'来自网页的消息
+	Set addPage=description.Create()
+	addPage("text").value="来自网页的消息"
+	'确定
+	Set qdButton=description.Create()
+	qdButton("text").value="确定"
+	'删除地址
+	Set deleteButton=description.Create()
+	deleteButton("text").value="删除地址"

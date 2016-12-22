@@ -1,0 +1,56 @@
+executefile "C:\QTP_Eagle\Utils\ExcelUtil.vbs"
+executefile "C:\QTP_Eagle\Utils\log.vbs"
+
+'员工列表-查看组test
+Function GroupCheck()
+    Browser("京东商城后台").Page("京东商城后台").WebEdit("name").Set ReadExcel("C:\QTP_Eagle\Data\GroupCheckData.xlsx", "Sheet1", 2, 1)
+    Browser("京东商城后台").Page("京东商城后台").WebEdit("password").Set ReadExcel("C:\QTP_Eagle\Data\GroupCheckData.xlsx", "Sheet1", 2, 2)
+    Browser("京东商城后台").Page("京东商城后台").WebButton("登陆").Click
+    If Browser("京东商城后台").Page("商城后台管理系统").WebElement("欢迎光临, admin").Exist(3) Then
+        Call logPrint("登陆后台成功！")
+    End If
+    Browser("京东商城后台").Page("商城后台管理系统").Link("用户管理").Click
+    Browser("京东商城后台").Page("商城后台管理系统").Link("员工列表").Click
+    Browser("京东商城后台").Page("商城后台管理系统_2").Link("查看组").Click
+    Browser("京东商城后台").Page("商城后台管理系统_3").WebCheckBox("group_id[]").Set "ON"
+    Browser("京东商城后台").Page("商城后台管理系统_3").WebButton("提交").Click
+    Browser("京东商城后台").Page("商城后台管理系统_4").Link("查看组").Click
+    If Browser("京东商城后台").Page("商城后台管理系统_3").WebElement("超级管理员").Exist(3) Then
+        Call logPrint("修改员工信息成功！")
+    End If
+End Function
+
+'会员列表-修改test
+Function changeList()
+    Browser("京东商城后台").Page("京东商城后台").WebEdit("name").Set ReadExcel("C:\QTP_Eagle\Data\ChangeListData.xlsx", "Sheet1", 2, 1)
+    Browser("京东商城后台").Page("京东商城后台").WebEdit("password").Set ReadExcel("C:\QTP_Eagle\Data\ChangeListData.xlsx", "Sheet1", 2, 1)
+    Browser("京东商城后台").Page("京东商城后台").WebButton("登陆").Click
+    Browser("京东商城后台").Page("商城后台管理系统").Link("用户管理").Click
+    Browser("京东商城后台").Page("商城后台管理系统").Link("会员列表").Click
+    Browser("京东商城后台").Page("商城后台管理系统_5").Link("修改").Click
+    Browser("京东商城后台").Page("商城后台管理系统_6").WebEdit("username").Set ReadExcel("C:\QTP_Eagle\Data\ChangeListData.xlsx", "Sheet1", 2, 1)
+    Browser("京东商城后台").Page("商城后台管理系统_6").WebButton("提交").Click
+    If Browser("京东商城后台").Page("商城后台管理系统_7").WebElement("username").Exist(3) Then
+	Call logPrint("修改会员列表成功！")
+    End If
+End Function
+
+'商品管理-图库test
+Function picturesCheck()
+    Browser("京东商城后台").Page("京东商城后台_2").WebEdit("name").Set ReadExcel("C:\QTP_Eagle\Data\pictureCheckData.xlsx", "Sheet1", 2, 1)
+    Browser("京东商城后台").Page("京东商城后台_2").WebEdit("password").Set ReadExcel("C:\QTP_Eagle\Data\pictureCheckData.xlsx", "Sheet1", 2, 2)
+    Browser("京东商城后台").Page("京东商城后台_2").WebButton("登陆").Click
+    Browser("京东商城后台").Page("商城后台管理系统_8").Link("商品管理").Click
+    Browser("京东商城后台").Page("商城后台管理系统_8").Link("商品管理_2").Click
+    Browser("京东商城后台").Page("商城后台管理系统_9").Link("图库_2").Click
+    If Browser("京东商城后台").Page("商城后台管理系统_11").Image("150x150").exist(3) Then
+	CheckValue = "图片检查成功！"
+        Call DoExcelColorGreen("C:\QTP_Eagle\Data\pictureCheckData.xlsx", "Sheet1", 2, 4)
+	Call DoExcel("C:\QTP_Eagle\Data\pictureCheckData.xlsx", "Sheet1", 2, 4)
+	Call logPrint("图片检查成功！")
+    else
+	Call DoExcelColorRed("C:\QTP_Eagle\Data\pictureCheckData.xlsx", "Sheet1", 2, 4)
+End If
+
+End Function
+

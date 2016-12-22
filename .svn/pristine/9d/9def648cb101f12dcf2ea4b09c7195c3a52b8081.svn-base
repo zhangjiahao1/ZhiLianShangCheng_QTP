@@ -1,0 +1,112 @@
+'登录
+	'京东商城后台
+	Set Browser=description.Create()
+	Browser("opentitle").value="京东商城后台"
+	'京东商城后台
+	Set jdPage=description.Create()
+	jdPage("title").value="京东商城后台"
+	'用户名
+	Set userName=description.Create()
+	userName("name").value="name"
+	'密码
+	Set password=description.Create()
+	password("name").value="password"
+	'登录按钮
+	Set dlButton=description.Create()
+	dlButton("name").value="登陆"
+'公告列表
+	'商城后台管理系统
+	Set backPage=description.Create()
+	backPage("title").value="商城后台管理系统"
+	'商城后台管理系统_2
+	Set backPage2=description.Create()
+	backPage2("name").value="商城后台管理系统_2"
+	'商城后台管理系统_3
+	Set backPage3=description.Create()
+	backPage3("name").value="商城后台管理系统_3"
+	'商城后台管理系统_4
+	Set backPage4=description.Create()
+	backPage4("name").value="商城后台管理系统_4"
+	'新闻管理
+	Set newsLink=description.Create()
+	newsLink("text").value="新闻管理"
+	'公告列表
+	Set news1Link=description.Create()
+	news1Link("text").value="公告列表"
+	'发布新闻
+	Set addLink=description.Create()
+	addLink("text").value="发布新闻"
+	'新闻标题
+	Set title=description.Create()
+	title("name").value="title"
+	'新闻类型
+	Set type=description.Create()
+	type("name").value="type"
+	'新闻内容
+	Set content=description.Create()
+	content("name").value="content"
+	'重填
+	Set resetButton=description.Create()
+	resetButton("name").value="重填"
+	'提交
+	Set submitButton=description.Create()
+	submitButton("name").value="提交"
+	'删除
+	Set deleteLink=description.Create()
+	deleteLink("text").value="删除"
+	'来自网页的消息
+	Set messagePage=description.Create()
+	messagePage("text").value="来自网页的消息"
+	'确定
+	Set qdLink=description.Create()
+	qdLink("text").value="确定"
+'展示图列表
+	'商城后台管理系统_5
+	Set backPage5=description.Create()
+	backPage5("name").value="商城后台管理系统_5"
+	'商城后台管理系统_6
+	Set backPage6=description.Create()
+	backPage6("name").value="商城后台管理系统_6"
+	'商城设置
+	Set mallLink=description.Create()
+	nmallLink("text").value="商城设置"
+	'展示图列表
+	Set mapLink=description.Create()
+	mapLink("text").value="展示图列表"
+	'添加展示图
+	Set addLink=description.Create()
+	addLink("text").value="添加展示图"
+	'标题
+	Set smtitle=description.Create()
+	smtitle("name").value="title"
+	'链接
+	Set link=description.Create()
+	link("name").value="link"
+	'图片
+	Set pic=description.Create()
+	pic("name").value="pic"
+	'提交
+	Set addButton=description.Create()
+	addButton("text").value="添加展示图"
+	'设置为已发布
+	Set yfbLink=description.Create()
+	yfbLink("text").value="设置为已发布"
+	'删除
+	Set delete=description.Create()
+	delete("text").value="删除"
+'消息列表
+	'商城后台管理系统_7
+	Set backPage7=description.Create()
+	backPage7("name").value="商城后台管理系统_7"
+	'商城后台管理系统_8
+	Set backPage8=description.Create()
+	backPage8("name").value="商城后台管理系统_8"
+	'消息列表
+	Set messageLink=description.Create()
+	messageLink("text").value="消息列表"
+	'2
+	Set secondLink=description.Create()
+	secondLink("text").value="2"
+	'<<
+	Set firstLink=description.Create()
+	firstLink("text").value="<<"

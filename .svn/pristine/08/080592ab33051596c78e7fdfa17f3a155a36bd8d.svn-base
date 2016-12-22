@@ -1,0 +1,55 @@
+Executefile "C:\QTP_Eagle\Utils\log.vbs"
+'我的订单
+Function MyOrderTest()
+Browser("智联商城").Page("智联商城").Link("登录").Click
+Browser("智联商城").Page("登录").WebEdit("username").Set "zhangjiahao"
+Browser("智联商城").Page("登录").WebEdit("password").Set "123456789"
+Browser("智联商城").Page("登录").WebButton("登  录").Click
+Browser("智联商城").Page("智联商城_2").Link("我的订单").Click
+Browser("智联商城").Page("京东").Link("详情").Click
+Browser("智联商城").Page("京东_2").Link("我的订单").Click
+Browser("智联商城").Page("京东_3").Link("取消").Click
+Browser("智联商城").Dialog("来自网页的消息").WinButton("取消").Click
+End Function
+Call MyOrderTest()
+
+'搜索--搜索框
+Function SearchBoxTest()
+Browser("智联商城").Page("智联商城").WebEdit("keyword").Set "牛仔裤"
+Browser("智联商城").Page("智联商城").WebButton("搜索").Click
+End Function
+Call SearchBoxTest()
+
+'搜索--导航
+Function NavigationTest()
+Browser("智联商城").Page("智联商城_2").Link("女士").Click
+If Browser("智联商城").Page("京东").Link("本千2015夏棉麻短袖t恤 女套装民族风宽松大码两件套长裙亚").Exist Then
+	Call logPrint("查找成功")
+Else
+	Call logPrint("查找失败")
+End If
+End Function
+Call NavigationTest()
+
+'搜索--全部商品分类
+Function LeftSearchTest()
+Browser("智联商城").Page("智联商城").Link("遮阳帽").Click
+End Function
+Call LeftSearchTest()
+
+'搜索--图片搜索
+Function PictureTest()
+Browser("智联商城").Page("智联商城").Image("l_55adf9b83c4fb").Click
+End Function
+Call PictureTest()
+
+'搜索--友情链接
+Function FriendsipTest()
+Browser("智联商城").Page("智联商城").Link("百度").Click
+If Browser("百度一下，你就知道").Page("百度一下，你就知道").WebButton("百度一下").Exist Then
+	Call logPrint("友情链接点击成功")
+Else
+	Call logPrint("友情链接点击失败")
+End If
+End Function
+Call FriendsipTest()

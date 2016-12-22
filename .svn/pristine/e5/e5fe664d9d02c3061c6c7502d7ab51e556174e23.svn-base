@@ -1,0 +1,33 @@
+Executefile "C:\QTP_Eagle\Utils\ExcelUtil.vbs"
+Executefile "C:\QTO_Eagle\Utils\log.vbs"
+'订单管理
+Function  OrderTest()
+Browser("京东商城后台").Page("京东商城后台").WebEdit("name").Set "admin"
+Browser("京东商城后台").Page("京东商城后台").WebEdit("password").Set "admin"
+Browser("京东商城后台").Page("京东商城后台").WebButton("登陆").Click
+Browser("京东商城后台").Page("商城后台管理系统").Link("订单管理").Click
+Browser("京东商城后台").Page("商城后台管理系统").Link("订单列表").Click
+Browser("京东商城后台").Page("商城后台管理系统_2").Link("修改").Click
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("linkman").Set ReadExcel("C:\QTP_Eagle\Data\ChangeOrder.xlsx", "Sheet1", 2, 1)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("address").Set ReadExcel("C:\QTP_Eagle\Data\ChangeOrder.xlsx", "Sheet1", 2, 2)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("code").Set ReadExcel("C:\QTP_Eagle\Data\ChangeOrder.xlsx", "Sheet1", 2, 3)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("phone").Set ReadExcel("C:\QTP_Eagle\Data\ChangeOrder.xlsx", "Sheet1", 2, 4)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("money").Set ReadExcel("C:\QTP_Eagle\Data\ChangeOrder.xlsx", "Sheet1", 2, 5)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebButton("提交").Click
+Call logPrint("修改成功")
+End Function
+Call Function OrderTest()
+
+'评论管理
+Function CommentTest()
+Browser("京东商城后台").Page("京东商城后台").WebEdit("name").Set "admin"
+Browser("京东商城后台").Page("京东商城后台").WebEdit("password").Set "admin"
+Browser("京东商城后台").Page("京东商城后台").WebButton("登陆").Click
+Browser("京东商城后台").Page("商城后台管理系统").Link("评论管理").Click
+Browser("京东商城后台").Page("商城后台管理系统").Link("评论列表").Click
+Browser("京东商城后台").Page("商城后台管理系统_2").Link("回复").Click
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("message").Set "谢谢惠顾"
+Browser("京东商城后台").Page("商城后台管理系统_3").WebButton("提交").Click
+Call logPrint("回复成功")
+End Function
+Call Function CommentTest()

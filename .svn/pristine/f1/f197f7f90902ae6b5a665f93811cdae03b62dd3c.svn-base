@@ -1,0 +1,73 @@
+Executefile "C:\QTP_Eagle\Utils\ExcelUtil.vbs"
+Executefile "C:\QTP_Eagle\Utils\log.vbs"
+
+
+'个人信息
+Function InformationTest()
+Browser("智联商城").Page("智联商城").Link("登录").Click
+Browser("智联商城").Page("登录").WebEdit("username").Set "zhangjiahao"
+Browser("智联商城").Page("登录").WebEdit("password").Set "123456789"
+Browser("智联商城").Page("登录").WebButton("登  录").Click
+Browser("智联商城").Page("智联商城_2").Link("zhangjiahao").Click
+Browser("智联商城").Page("京东12").WebEdit("nickname").Set ReadExcel("C:/QTP_Eagle/Data/Information.xlsx", "Sheet1", 2, 1)
+Browser("智联商城").Page("京东12").WebEdit("email").Set ReadExcel("C:/QTP_Eagle/Data/Information.xlsx", "Sheet1", 2, 2)
+Browser("智联商城").Page("京东12").WebEdit("username").Set ReadExcel("C:/QTP_Eagle/Data/Information.xlsx", "Sheet1", 2, 3)
+Browser("智联商城").Page("京东12").WebEdit("password").Set ReadExcel("C:/QTP_Eagle/Data/Information.xlsx", "Sheet1", 2, 4)
+Browser("智联商城").Page("京东12").WebEdit("repassword").Set ReadExcel("C:/QTP_Eagle/Data/Information.xlsx", "Sheet1", 2, 5)
+Browser("智联商城").Page("京东12").WebButton("提交").Click
+If Browser("智联商城").Page("京东12").Link("zhangjiahao").Exist Then
+	CheckValue="修改成功"
+	Call DoExcelColorGreen("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,6)
+	Call DoExcel("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,6)
+	Call logPrint("成功修改个人信息")
+Else
+	CheckValue="修改失败"
+	Call DoExcelColorRed("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,6)
+	Call DoExcel("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,6)
+	Call logPrint("修改个人信息失败")
+End If
+Browser("智联商城").CloseAllTabs
+End Function
+
+
+'收货地址
+Function AddressTest()
+Browser("智联商城").Page("智联商城").Link("登录").Click
+Browser("智联商城").Page("登录").WebEdit("username").Set "zhangjiahao"
+Browser("智联商城").Page("登录").WebEdit("password").SetSecure "58467c39c8fc2af95e5ba3ba6b24633cdc5cc61035f42a59"
+Browser("智联商城").Page("登录").WebButton("登  录").Click
+Browser("智联商城").Page("智联商城_2").Link("zhangjiahao").Click
+Browser("智联商城").Page("京东12").Link("收货地址").Click
+'添加收货地址
+Browser("智联商城").Page("京东12_2").Link("添加收货地址").Click
+Browser("智联商城").Page("京东12_2").WebEdit("linkman").Set ReadExcel("C:/QTP_Eagle/Data/Address.xlsx", "Sheet1", 2, 1)
+Browser("智联商城").Page("京东12_2").WebList("province").Select ReadExcel("C:/QTP_Eagle/Data/Address.xlsx", "Sheet1", 2, 2)
+Browser("智联商城").Page("京东12_2").WebList("city").Select ReadExcel("C:/QTP_Eagle/Data/Address.xlsx", "Sheet1", 2, 3)
+Browser("智联商城").Page("京东12_2").WebList("county").Select ReadExcel("C:/QTP_Eagle/Data/Address.xlsx", "Sheet1", 2, 4)
+Browser("智联商城").Page("京东12_2").WebEdit("address2").Set ReadExcel("C:/QTP_Eagle/Data/Address.xlsx", "Sheet1", 2, 5)
+Browser("智联商城").Page("京东12_2").WebEdit("phone").Set ReadExcel("C:/QTP_Eagle/Data/Address.xlsx", "Sheet1", 2, 6)
+Browser("智联商城").Page("京东12_2").WebEdit("code").Set ReadExcel("C:/QTP_Eagle/Data/Address.xlsx", "Sheet1", 2, 7)
+Browser("智联商城").Page("京东12_2").WebElement("保存收货地址").Click
+Browser("智联商城").Dialog("来自网页的消息").WinButton("确定").Click
+If Browser("智联商城").Page("京东12_2").Link("删除地址").Exist Then
+	CheckValue="添加成功"
+	Call DoExcelColorGreen("C:/QTP_Eagle/Data/Address.xlsx","Sheet1",2,8)
+	Call DoExcel("C:/QTP_Eagle/Data/Address.xlsx","Sheet1",2,8)
+	Call logPrint("成功添加收货地址")
+else
+	CheckValue="添加失败"
+	Call DoExcelColorRed("C:/QTP_Eagle/Data/Address.xlsx","Sheet1",2,8)
+	Call DoExcel("C:/QTP_Eagle/Data/Address.xlsx","Sheet1",2,8)
+	Call logPrint("添加收货地址失败")
+End If
+'删除收货地址
+Browser("智联商城").Page("京东12_2").Link("删除地址").Click
+If Browser("智联商城").Page("京东12_2").Link("删除地址").Exist Then
+        Call logPrint("删除收货地址失败")
+else
+	Call logPrint("成功删除收货地址")
+End If
+Browser("智联商城").Page("京东12_2").Sync
+Browser("智联商城").CloseAllTabs
+
+End Function

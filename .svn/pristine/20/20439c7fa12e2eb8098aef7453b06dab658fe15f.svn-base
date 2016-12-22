@@ -1,0 +1,30 @@
+Executefile "C:\QTP_Eagle\Utils\ExcelUtil.vbs"
+Executefile "C:\QTP_Eagle\Utils\log.vbs"
+
+'登录测试
+Function loginTest()
+    Browser("智联商城").Page("智联商城").Link("登录").Click
+    Browser("智联商城").Page("登录").WebEdit("username").Set ReadExcel("C:\QTP_Eagle\Data\LoginData.xlsx", "Sheet1", 2, 1)
+    Browser("智联商城").Page("登录").WebEdit("password").Set ReadExcel("C:\QTP_Eagle\Data\LoginData.xlsx", "Sheet1", 2, 2)
+    Browser("智联商城").Page("登录").WebButton("登  录").Click
+    if Browser("智联商城").Page("智联商城_2").Link("退出").Exist(3) Then
+        CheckValue = "成功登陆"
+        Call DoExcelColorGreen("C:\QTP_Eagle\Data\LoginData.xlsx", "Sheet1", 2, 4)
+	Call DoExcel("C:\QTP_Eagle\Data\LoginData.xlsx", "Sheet1", 2, 4)
+	Call logPrint("成功登陆")
+    else
+	Call DoExcelColorRed("C:\QTP_Eagle\Data\LoginData.xlsx", "Sheet1", 2, 4)
+    End if
+End Function
+
+'注册测试
+Function register()
+    Browser("智联商城").Page("智联商城").Link("快速注册").Click
+    Browser("智联商城").Page("注册页面").WebEdit("username").Set ReadExcel("C:\QTP_Eagle\Data\RegisterData.xlsx", "Sheet1", 2, 1)
+    Browser("智联商城").Page("注册页面").WebEdit("password").Set ReadExcel("C:\QTP_Eagle\Data\RegisterData.xlsx", "Sheet1", 2, 2)
+    Browser("智联商城").Page("注册页面").WebEdit("password2").Set ReadExcel("C:\QTP_Eagle\Data\RegisterData.xlsx", "Sheet1", 2, 3)
+    Browser("智联商城").Page("注册页面").WebEdit("email").Set ReadExcel("C:\QTP_Eagle\Data\RegisterData.xlsx", "Sheet1", 2, 4)
+    Browser("智联商城").Page("注册页面").WebButton("注  册").Click
+    Call logPrint("注册成功")
+    Call DoExcelColorGreen("C:\QTP_Eagle\Data\LoginData.xlsx", "Sheet1", 2, 6)
+End Function

@@ -1,0 +1,78 @@
+'添加地址
+Function
+Executefile ("C:\QTP_Eagle\Utils\ExcelUtil.vbs")
+Executefile ("C:\QTP_Eagle\Utils\log.vbs")
+Browser("智联商城").Page("智联商城").Link("登录").Click
+Browser("智联商城").Page("登录").WebEdit("username").Set "zhangjiahao"
+Browser("智联商城").Page("登录").WebEdit("password").SetSecure "583fc9240dea7c0627bca5dc05d39cf42065f69a31f5d7a2"
+Browser("智联商城").Page("登录").WebButton("登  录").Click
+Browser("智联商城").Page("智联商城_2").Image("l_55adf9b83c4fb").Click
+Browser("京东").Page("京东").Link("加入购物车").Click
+Browser("京东").Dialog("来自网页的消息").WinButton("确定").Click
+Browser("京东").Page("京东_2").Sync
+Browser("京东").CloseAllTabs
+Browser("智联商城").Page("智联商城_2").Link("我的购物车").Click
+Browser("京东").Page("京东_3").WebCheckBox("WebCheckBox").Set "ON"
+Browser("京东").Page("京东_3").Link("去 结 算").Click
+Browser("京东").Page("京东_4").Link("添加新地址").Click
+Browser("京东").Page("京东_4").WebEdit("linkman").Set ReadExcel("C:\QTP_Eagle\Data\BalanceData.xlsx","Sheet1",2,1)
+Browser("京东").Page("京东_4").WebEdit("phone").Set ReadExcel("C:\QTP_Eagle\Data\BalanceData.xlsx","Sheet1",2,2)
+Browser("京东").Page("京东_4").WebEdit("code").Set ReadExcel("C:\QTP_Eagle\Data\BalanceData.xlsx","Sheet1",2,3)
+Browser("京东").Page("京东_4").WebList("province").Select ReadExcel("C:\QTP_Eagle\Data\BalanceData.xlsx","Sheet1",2,4)
+Browser("京东").Page("京东_4").WebList("city").Select ReadExcel("C:\QTP_Eagle\Data\BalanceData.xlsx","Sheet1",2,5)
+Browser("京东").Page("京东_4").WebList("county").Select ReadExcel("C:\QTP_Eagle\Data\BalanceData.xlsx","Sheet1",2,6)
+Browser("京东").Page("京东_4").WebEdit("address2").Set ReadExcel("C:\QTP_Eagle\Data\BalanceData.xlsx","Sheet1",2,7)
+Browser("京东").Page("京东_4").WebElement("提 交").Click
+logPrint("成功添加新地址")
+Browser("智联商城").Page("智联商城").Sync
+Browser("京东").Dialog("来自网页的消息").WinButton("确定").Click
+Browser("京东").Page("京东_4").Link("提 交 订 单").Click
+Browser("京东").CloseAllTabs
+EndFunction
+'设为默认地址
+Function
+Executefile "C:\QTP_Eagle\Utils\log.vbs"
+Browser("智联商城").Page("智联商城").Link("登录").Click
+Browser("智联商城").Page("登录").WebEdit("username").Set "zhangjiahao"
+Browser("智联商城").Page("登录").WebEdit("password").SetSecure "583fcfbdf2c20e6abad8957e72652d7a18c3db11aed2b76b"
+Browser("智联商城").Page("登录").WebButton("登  录").Click
+Browser("智联商城").Page("智联商城_2").Image("l_55adf9b83c4fb").Click
+Browser("京东").Page("京东").Link("加入购物车").Click
+Browser("京东").Dialog("来自网页的消息").WinButton("确定").Click
+Browser("京东").Page("京东_2").Sync
+Browser("京东").CloseAllTabs
+Browser("智联商城").Page("智联商城_2").Link("我的购物车").Click
+Browser("京东").Page("京东_3").WebCheckBox("WebCheckBox").Set "ON"
+Browser("京东").Page("京东_3").Link("去 结 算").Click
+Browser("京东").Page("京东_4").Link("更多地址 ...").Click
+Browser("京东").Page("京东_4").Link("设为默认地址").Click
+Browser("京东").Page("京东_4").Link("提 交 订 单").Click
+Browser("京东").Page("京东_5").Sync
+Browser("京东").CloseAllTabs
+Browser("智联商城").Page("智联商城_2").Sync
+Browser("智联商城").CloseAllTabs
+Call logPrint("设为默认地址成功")
+EndFunction
+'删除地址
+Function
+Browser("智联商城").Page("智联商城").Link("登录").Click
+Browser("智联商城").Page("登录").WebEdit("username").Set "zhangjiahao"
+Browser("智联商城").Page("登录").WebEdit("password").SetSecure "5848ced3a6d7956e517668f0f55f73bd05c883df9a792c0c"
+Browser("智联商城").Page("登录").WebButton("登  录").Click
+Browser("智联商城").Page("智联商城_2").Image("l_55adf9b83c4fb_2").Click
+Browser("京东").Page("京东").Link("加入购物车").Click
+Browser("京东").Dialog("来自网页的消息").WinButton("确定").Click
+Browser("京东").Page("京东_2").Sync
+Browser("京东").CloseAllTabs
+Browser("智联商城").Page("智联商城_2").Link("我的购物车").Click
+Browser("京东").Page("京东_3").WebCheckBox("WebCheckBox").Set "ON"
+Browser("京东").Page("京东_3").Link("去 结 算").Click
+Browser("京东").Page("京东_4").Link("更多地址 ...").Click
+Browser("京东").Page("京东_4").Link("删除_2").Click
+Browser("京东").Dialog("来自网页的消息").WinButton("确定").Click
+Browser("京东").Page("京东_4").Link("提 交 订 单").Click
+Browser("京东").Page("京东_5").Sync
+Browser("京东").CloseAllTabs
+Browser("智联商城").Page("智联商城_2").Sync
+Browser("智联商城").CloseAllTabs
+EndFunction

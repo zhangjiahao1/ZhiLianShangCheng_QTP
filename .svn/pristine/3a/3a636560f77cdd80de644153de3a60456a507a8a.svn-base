@@ -1,0 +1,109 @@
+Executefile "C:\QTP_Eagle\Utils\ExcelUtil.vbs"
+Executefile "C:\QTP_Eagle\Utils\log.vbs"
+
+'公告列表
+Function NewsTest()
+Browser("京东商城后台").Page("京东商城后台").WebEdit("name").Set "admin"
+Browser("京东商城后台").Page("京东商城后台").WebEdit("password").Set "admin"
+Browser("京东商城后台").Page("京东商城后台").WebButton("登陆").Click
+Browser("京东商城后台").Page("商城后台管理系统").Link("新闻管理").Click
+Browser("京东商城后台").Page("商城后台管理系统").Link("公告列表").Click
+Browser("京东商城后台").Page("商城后台管理系统_2").Link("发布新闻").Click
+'发布新闻
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("title").Set ReadExcel("C:/QTP_Eagle/Data/News.xlsx", "Sheet1", 2, 1)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebRadioGroup("type").Select ReadExcel("C:/QTP_Eagle/Data/News.xlsx", "Sheet1", 2, 2)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("content").Set ReadExcel("C:/QTP_Eagle/Data/News.xlsx", "Sheet1", 2, 3)
+If Browser("京东商城后台").Page("商城后台管理系统_3").WebButton("重填").Exist Then
+	CheckValue="成功重填"
+	Call DoExcelColorGreen("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,4)
+	Call DoExcel("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,4)
+	Call logPrint("成功重填新闻")
+Else  
+	CheckValue="重填失败"
+	Call DoExcelColorRed("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,4)
+	Call DoExcel("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,4)
+	Call logPrint("重填新闻失败")
+End If
+'重填新闻
+Browser("京东商城后台").Page("商城后台管理系统_3").WebButton("重填").Click
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("title").Set ReadExcel("C:/QTP_Eagle/Data/News.xlsx", "Sheet1", 3, 1)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebRadioGroup("type").Select ReadExcel("C:/QTP_Eagle/Data/News.xlsx", "Sheet1", 3, 2)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("content").Set ReadExcel("C:/QTP_Eagle/Data/News.xlsx", "Sheet1", 3, 3)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebButton("提交").Click
+If Browser("京东商城后台").Page("商城后台管理系统_4").Link("删除").Exist Then
+	CheckValue="添加成功"
+	Call DoExcelColorGreen("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",3,4)
+	Call DoExcel("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",3,4)
+	Call logPrint("成功添加新闻")
+Else  
+	CheckValue="添加失败"
+	Call DoExcelColorRed("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",3,4)
+	Call DoExcel("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",3,4)
+	Call logPrint("添加新闻失败")
+End If
+'删除新闻
+Browser("京东商城后台").Page("商城后台管理系统_4").Link("删除").Click
+If Browser("京东商城后台").Page("商城后台管理系统_4").Link("删除").Exist Then
+	Call logPrint("成功删除新闻")
+Else  
+	Call logPrint("删除新闻失败")
+End If
+Browser("智联商城").CloseAllTabs
+End Function
+
+
+'展示图列表
+Function SHowMapTest()
+Browser("京东商城后台").Page("京东商城后台").WebEdit("name").Set "admin"
+Browser("京东商城后台").Page("京东商城后台").WebEdit("password").Set "admin"
+Browser("京东商城后台").Page("京东商城后台").WebButton("登陆").Click
+Browser("京东商城后台").Page("商城后台管理系统").Link("商城设置").Click
+Browser("京东商城后台").Page("商城后台管理系统").Link("展示图列表").Click
+Browser("京东商城后台").Page("商城后台管理系统_2").Link("添加展示图").Click
+'添加展示图
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("title").Set ReadExcel("C:/QTP_Eagle/Data/Show Map.xlsx", "Sheet1", 2, 1)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebEdit("link").Set ReadExcel("C:/QTP_Eagle/Data/Show Map.xlsx", "Sheet1", 2, 2 )
+Browser("京东商城后台").Page("商城后台管理系统_3").WebFile("pic").Set ReadExcel("C:/QTP_Eagle/Data/Show Map.xlsx", "Sheet1", 2, 3)
+Browser("京东商城后台").Page("商城后台管理系统_3").WebButton("提交").Click
+Browser("京东商城后台").Back
+Browser("京东商城后台").Page("商城后台管理系统_2").Sync
+Browser("京东商城后台").Back
+If Browser("京东商城后台").Page("商城后台管理系统_2").WebElement("删除").Exist  Then
+	CheckValue="添加成功"
+	Call DoExcelColorGreen("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,4)
+	Call DoExcel("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,4)
+	Call logPrint("成功添加展示图")
+Else  
+	CheckValue="添加失败"
+	Call DoExcelColorRed("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,4)
+	Call DoExcel("C:/QTP_Eagle/Data/Information.xlsx","Sheet1",2,4)
+	Call logPrint("添加展示图失败")
+End If
+'设置为新添加
+Browser("京东商城后台").Page("商城后台管理系统_2").Link("设置为新添加").Click
+If Browser("京东商城后台").Page("商城后台管理系统_2").WebElement("删除").Exist  Then
+	Call logPrint("成功将展示图设置为新添加")
+Else  
+	Call logPrint("将展示图设置为新添加失败")
+End If
+Browser("京东商城后台").Page("商城后台管理系统_2").Sync
+Browser("京东商城后台").CloseAllTabs
+End Function
+
+
+'消息列表
+Function MessageTest()
+Browser("京东商城后台").Page("京东商城后台").WebEdit("name").Set "admin"
+Browser("京东商城后台").Page("京东商城后台").WebEdit("password").SetSecure "5848be95b8f0f13097b920385a6136c0"
+Browser("京东商城后台").Page("京东商城后台").WebButton("登陆").Click
+Browser("京东商城后台").Page("商城后台管理系统").Link("新闻管理").Click
+Browser("京东商城后台").Page("商城后台管理系统").Link("消息列表").Click
+Browser("京东商城后台").Page("商城后台管理系统_3").Link("2").Click
+If Browser("京东商城后台").Page("商城后台管理系统_4").Link("<<").Exist Then
+	Call logPrint("页码按钮可用")
+Else
+	Call logPrint("页码按钮不可用")
+End If
+Browser("京东商城后台").CloseAllTabs
+
+End Function

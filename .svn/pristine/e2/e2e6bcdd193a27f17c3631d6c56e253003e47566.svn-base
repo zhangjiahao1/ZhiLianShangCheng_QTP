@@ -1,0 +1,15 @@
+2008-1-18 3:12:26: 最多执行4个测试用例
+2008-1-18 3:12:27: 开始运行测试用例 银行收款 , 数据存放位置： D:\Auto Test FrameWork\testData\settlement\collection\银行收款.xls
+2008-1-18 3:12:48: 测试用例的数据加载完成。D:\Auto Test FrameWork\testData\settlement\collection\银行收款.xls
+2008-1-18 3:12:48: 加载Task脚本文件完成。D:\Auto Test FrameWork\testScript\login.vbs
+2008-1-18 3:12:48: 加载测试数据完成。login
+2008-1-18 3:12:49: 执行测试步骤 3, objlogin.login "login"
+2008-1-18 3:12:55: lbx41
+2008-1-18 3:12:55: 123456
+2008-1-18 3:12:55: 执行测试步骤 5, objlogin.login "login"
+2008-1-18 3:13:4: lbx42
+2008-1-18 3:13:5: 123456
+2008-1-18 3:13:5: 执行测试步骤 7, Call objlogin.logout()
+2008-1-18 3:13:10: 所有测试步骤执行完成。
+2008-1-18 3:13:10: 执行完成。测试用例 银行收款 , 数据存放位置： D:\Auto Test FrameWork\testData\settlement\collection\银行收款.xls
+2008-1-18 3:13:10: 所有测试用例执行完成。
